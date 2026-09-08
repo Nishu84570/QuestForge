@@ -46,6 +46,7 @@ function Register() {
             data?.error ||
             'Registration failed.'
         );
+
         return;
       }
 
@@ -62,6 +63,7 @@ function Register() {
           replace: true,
         });
       }, 1200);
+
     } catch (err) {
       console.error(
         'Registration error:',
@@ -71,39 +73,45 @@ function Register() {
       setError(
         'Unable to connect to QuestForge backend.'
       );
+
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="page">
-      <div className="login-card">
-        <p className="eyebrow">
+    <div className="auth-page">
+
+      <div className="auth-card">
+
+        {/* BRAND */}
+
+        <p className="auth-brand">
           QUESTFORGE
         </p>
+
+
+        {/* HEADING */}
 
         <h1>
           Create Account 🚀
         </h1>
 
-        <p>
+        <p className="auth-subtitle">
           Join QuestForge and start your journey.
         </p>
 
+
+        {/* REGISTER FORM */}
+
         <form
           onSubmit={handleRegister}
-          style={{
-            marginTop: '25px',
-          }}
+          className="auth-form"
         >
-          <label
-            htmlFor="register-name"
-            style={{
-              display: 'block',
-              marginBottom: '7px',
-            }}
-          >
+
+          {/* NAME */}
+
+          <label htmlFor="register-name">
             Name
           </label>
 
@@ -119,23 +127,12 @@ function Register() {
             autoComplete="name"
             required
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '12px',
-              marginBottom: '15px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              boxSizing: 'border-box',
-            }}
           />
 
-          <label
-            htmlFor="register-email"
-            style={{
-              display: 'block',
-              marginBottom: '7px',
-            }}
-          >
+
+          {/* EMAIL */}
+
+          <label htmlFor="register-email">
             Email
           </label>
 
@@ -151,23 +148,12 @@ function Register() {
             autoComplete="email"
             required
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '12px',
-              marginBottom: '15px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              boxSizing: 'border-box',
-            }}
           />
 
-          <label
-            htmlFor="register-password"
-            style={{
-              display: 'block',
-              marginBottom: '7px',
-            }}
-          >
+
+          {/* PASSWORD */}
+
+          <label htmlFor="register-password">
             Password
           </label>
 
@@ -184,76 +170,54 @@ function Register() {
             required
             minLength={6}
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '12px',
-              marginBottom: '15px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              boxSizing: 'border-box',
-            }}
           />
 
+
+          {/* ERROR */}
+
           {error && (
-            <div
-              className="empty-card"
-              style={{
-                marginBottom: '15px',
-                padding: '12px',
-              }}
-            >
-              <p className="error-text">
-                {error}
-              </p>
+            <div className="auth-error">
+              <p>{error}</p>
             </div>
           )}
 
+
+          {/* SUCCESS */}
+
           {success && (
-            <div
-              className="empty-card"
-              style={{
-                marginBottom: '15px',
-                padding: '12px',
-              }}
-            >
-              <p
-                style={{
-                  color: '#16a34a',
-                  margin: 0,
-                }}
-              >
-                {success}
-              </p>
+            <div className="auth-success">
+              <p>{success}</p>
             </div>
           )}
+
+
+          {/* REGISTER BUTTON */}
 
           <button
             type="submit"
-            className="primary-button"
+            className="primary-button auth-button"
             disabled={loading}
-            style={{
-              width: '100%',
-            }}
           >
             {loading
               ? 'Creating account...'
               : 'Create Account'}
           </button>
+
         </form>
 
-        <p
-          style={{
-            marginTop: '20px',
-            textAlign: 'center',
-          }}
-        >
+
+        {/* LOGIN LINK */}
+
+        <p className="auth-footer">
           Already have an account?{' '}
 
           <Link to="/login">
             Login
           </Link>
         </p>
+
       </div>
+
     </div>
   );
 }

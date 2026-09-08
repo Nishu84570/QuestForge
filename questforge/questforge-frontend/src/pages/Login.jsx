@@ -20,14 +20,13 @@ function Login() {
     setLoading(true);
 
     try {
-      const { response, data } =
-        await apiRequest('/auth/login', {
-          method: 'POST',
-          body: JSON.stringify({
-            email: email.trim(),
-            password,
-          }),
-        });
+      const { response, data } = await apiRequest('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email.trim(),
+          password,
+        }),
+      });
 
       if (!response.ok) {
         setError(
@@ -63,10 +62,7 @@ function Login() {
         });
       }
     } catch (err) {
-      console.error(
-        'Login error:',
-        err
-      );
+      console.error('Login error:', err);
 
       setError(
         'Unable to connect to QuestForge backend.'
@@ -77,36 +73,38 @@ function Login() {
   };
 
   return (
-    <div className="page">
+    <div className="auth-page">
 
-      <div className="login-card">
+      <div className="auth-card">
 
-        <p className="eyebrow">
+        {/* BRAND */}
+
+        <p className="auth-brand">
           QUESTFORGE
         </p>
+
+
+        {/* HEADING */}
 
         <h1>
           Welcome Back 👋
         </h1>
 
-        <p>
+        <p className="auth-subtitle">
           Login to continue your quest.
         </p>
 
+
+        {/* LOGIN FORM */}
+
         <form
           onSubmit={handleLogin}
-          style={{
-            marginTop: '25px',
-          }}
+          className="auth-form"
         >
 
-          <label
-            htmlFor="login-email"
-            style={{
-              display: 'block',
-              marginBottom: '7px',
-            }}
-          >
+          {/* EMAIL */}
+
+          <label htmlFor="login-email">
             Email
           </label>
 
@@ -122,23 +120,12 @@ function Login() {
             autoComplete="email"
             required
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '12px',
-              marginBottom: '15px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              boxSizing: 'border-box',
-            }}
           />
 
-          <label
-            htmlFor="login-password"
-            style={{
-              display: 'block',
-              marginBottom: '7px',
-            }}
-          >
+
+          {/* PASSWORD */}
+
+          <label htmlFor="login-password">
             Password
           </label>
 
@@ -154,37 +141,24 @@ function Login() {
             autoComplete="current-password"
             required
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '12px',
-              marginBottom: '15px',
-              border: '1px solid #d1d5db',
-              borderRadius: '8px',
-              boxSizing: 'border-box',
-            }}
           />
 
+
+          {/* ERROR */}
+
           {error && (
-            <div
-              className="empty-card"
-              style={{
-                marginBottom: '15px',
-                padding: '12px',
-              }}
-            >
-              <p className="error-text">
-                {error}
-              </p>
+            <div className="auth-error">
+              <p>{error}</p>
             </div>
           )}
 
+
+          {/* LOGIN BUTTON */}
+
           <button
             type="submit"
-            className="primary-button"
+            className="primary-button auth-button"
             disabled={loading}
-            style={{
-              width: '100%',
-            }}
           >
             {loading
               ? 'Logging in...'
@@ -193,12 +167,10 @@ function Login() {
 
         </form>
 
-        <p
-          style={{
-            marginTop: '20px',
-            textAlign: 'center',
-          }}
-        >
+
+        {/* REGISTER LINK */}
+
+        <p className="auth-footer">
           Don't have an account?{' '}
 
           <Link to="/register">
