@@ -530,7 +530,7 @@ Run backend tests using:
 For development, a feature-branch workflow can be used:
 
 ```bash
-git switch -c feature/your-feature
+git switch -c 
 ```
 
 After making changes:
@@ -548,51 +548,16 @@ git add .
 Commit:
 
 ```bash
-git commit -m "Describe your changes"
+git commit -m 
 ```
 
 Push the branch:
 
 ```bash
-git push origin feature/your-feature
+git push origin 
 ```
 
 Then create a Pull Request for review.
-
----
-
-# 🔒 Security
-
-Do not commit sensitive information to the repository.
-
-Never upload:
-
-* Passwords
-* JWT secrets
-* API keys
-* Database credentials
-* Private tokens
-* Production secrets
-* `.env` files containing credentials
-
-Use environment variables or appropriate application configuration for sensitive values.
-
----
-
-# 🗺️ Future Improvements
-
-Potential improvements for future versions include:
-
-* 🧪 More comprehensive unit and integration tests
-* 🐳 Docker containerization
-* 🔄 CI/CD pipeline
-* ☁️ Cloud deployment
-* 📊 More detailed analytics
-* 🔍 Advanced challenge filtering
-* 🏆 Expanded gamification system
-* 📈 More detailed user progress tracking
-* ⚡ Performance optimization
-* 📱 Further responsive UI improvements
 
 ---
 
